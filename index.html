@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!-- ===== EDIT PER KLIEN: judul, deskripsi, alamat & foto pratinjau saat link dibagikan (WhatsApp, Instagram, dll) =====
+     og:image harus alamat LENGKAP (https://...), ukuran ideal 1200x630, di bawah 300 KB. -->
+<title>The Wedding of Andi &amp; Nina</title>
+<meta name="description" content="Kami mengundang Anda ke pernikahan Andi &amp; Nina, Sabtu, 20 Maret 2027.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Wedding of Andi &amp; Nina">
+<meta property="og:title" content="The Wedding of Andi &amp; Nina">
+<meta property="og:description" content="Sabtu, 20 Maret 2027. Kami mengundang Anda untuk hadir dan memberikan doa restu.">
+<meta property="og:url" content="https://ruangresepsi.com/demo-story/">
+<meta property="og:image" content="https://ruangresepsi.com/demo-story/assets/photos/preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<!-- ===== akhir bagian edit per klien ===== -->
+<meta name="theme-color" content="#faf6ef">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+<div id="dots"></div>
+<button id="mu" aria-label="Musik"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/><path class="x" d="M3 3l18 18"/></svg></button>
+<audio id="aud" loop preload="none"></audio>
+<main>
+<section class="pg pic" id="cover"><div class="bg ph"></div><div class="in"><span class="tag">The Wedding of</span>
+  <h1><i id="cA"></i><b>&amp;</b><i id="cB"></i></h1><div class="date" id="cDate"></div>
+  <div class="to">Kepada Yth.<strong id="cTo">Bapak/Ibu/Saudara/i</strong></div><button class="btn fill" id="open">Buka Undangan</button></div></section>
+<section class="pg pic" id="hero"><div class="bg ph" id="qbg"></div><div class="in rv"><span class="tag">Kami Akan Menikah</span><p class="lead" id="hLine"></p><blockquote id="qText"></blockquote><cite id="qSrc"></cite></div></section>
+<section class="pg cp" id="couple"><div id="people"></div></section>
+<section class="pg b" id="date"><div class="in rv"><span class="tag">Menuju Hari Bahagia</span><div class="bigdate"><b id="bigD"></b><span id="bigM"></span></div>
+  <div class="cd"><div><b id="d">0</b>Hari</div><div><b id="h">0</b>Jam</div><div><b id="m">0</b>Menit</div><div><b id="s">0</b>Detik</div></div></div></section>
+<section class="pg a" id="event"><div class="in"><span class="tag rv">Save The Date</span><h2 class="rv">Detail Acara</h2><div id="events"></div></div></section>
+<section class="pg c" id="story"><div class="in"><span class="tag rv">Perjalanan Kami</span><h2 class="rv">Love Story</h2></div><div class="hs" id="tl"></div></section>
+<section class="pg" id="gallery"><div class="in"><span class="tag rv">Momen</span><h2 class="rv">Galeri</h2></div><div class="hs" id="gal"></div></section>
+<section class="pg a" id="gift"><div class="in"><span class="tag rv">Tanda Kasih</span><h2 class="rv">Digital Gift</h2><p id="gTxt"></p><div id="accs"></div><div class="addr" id="addr"></div></div></section>
+<section class="pg b" id="rsvp"><div class="in"><span class="tag rv">Konfirmasi</span><h2 class="rv">RSVP</h2>
+  <form id="f">
+    <div><label for="n">Nama</label><input id="n" required maxlength="60"></div>
+    <div><label for="a">Kehadiran</label><select id="a"><option>Hadir</option><option>Tidak Hadir</option><option>Masih Ragu</option></select></div>
+    <div><label for="g">Jumlah Tamu</label><select id="g"><option>1</option><option>2</option><option>3</option><option>4</option></select></div>
+    <div><label for="t">Ucapan &amp; Doa</label><textarea id="t" required maxlength="300"></textarea></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn fill">Kirim</button><button type="button" class="btn" id="wa" hidden>Kirim via WhatsApp</button></div>
+  </form></div></section>
+<section class="pg" id="guest"><div class="in"><span class="tag rv">Doa Restu</span><h2 class="rv">Buku Tamu</h2><div class="wishes" id="wishes"></div></div></section>
+<section class="pg pic" id="close"><div class="bg ph"></div><div class="in rv"><p id="cTxt"></p><span class="tag">Dengan Cinta</span><h2 id="cNames"></h2><footer>#<span id="hash"></span><br><span id="brand"></span></footer></div></section>
+</main>
+<div id="toast"></div>
+<script src="config.js?v=1" charset="utf-8"></script>
+<script src="themes.js?v=1" charset="utf-8"></script>
+<script src="script.js?v=1" charset="utf-8"></script>
+</body>
+</html>
