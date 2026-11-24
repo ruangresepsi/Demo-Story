@@ -17,9 +17,15 @@ const dk=lum(COL.ivory)<.4;R.setProperty("--lt",dk?COL.gold:COL.champ);R.setProp
 const l=document.createElement("link");l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?"+TH.g.map(f=>"family="+f).join("&")+"&display=swap";document.head.appendChild(l);
 const m=document.querySelector('meta[name="theme-color"]');if(m)m.content=COL.ivory}
 const cv=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+/* hiasan bunga (SVG) memakai warna tema */
+const flw=(x,y,s,a,b)=>`<g transform='translate(${x} ${y}) scale(${s})'>${[0,72,144,216,288].map(r=>`<ellipse cx='0' cy='-15' rx='9' ry='16' fill='${a}' transform='rotate(${r})'/>`).join("")}<circle r='6.5' fill='${b}'/></g>`;
+const lf=(x,y,r,c)=>`<ellipse cx='${x}' cy='${y}' rx='5.5' ry='14' fill='${c}' transform='rotate(${r} ${x} ${y})'/>`;
+const flr=(a,b,l)=>`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><path d='M4 196C40 150 72 112 128 70' fill='none' stroke='${l}' stroke-width='2.5' stroke-linecap='round'/>${lf(34,150,40,l)}${lf(62,120,-30,l)}${lf(88,100,50,l)}${lf(46,172,-50,l)}${flw(128,66,1.35,a,b)}${flw(70,128,.8,a,b)}${flw(30,170,.5,a,b)}</svg>`;
+const svgUrl=s=>`url("data:image/svg+xml;utf8,${s.replace(/#/g,"%23")}")`;
+{const R=document.documentElement.style;R.setProperty("--flr",svgUrl(flr(COL.beige,COL.gold,COL.gold)));R.setProperty("--flrl",svgUrl(flr("#ffffff",COL.gold,"#ffffff")))}
 function ph(src,i){ if(src) return `url("${src}")`;
   const [a,b]=[[cv("--cream"),cv("--champ")],[cv("--champ"),cv("--beige")]][i%2],g=cv("--gold");
-  const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${a}'/><stop offset='1' stop-color='${b}'/></linearGradient></defs><rect width='400' height='500' fill='url(%23g)'/><g fill='none' stroke='${g}' stroke-opacity='.55' stroke-width='1.2'><circle cx='200' cy='210' r='46'/><path d='M120 440c0-70 36-120 80-120s80 50 80 120'/><path d='M200 164c-30-40-8-72 0-72s30 32 0 72z'/></g></svg>`;
+  const svg=`<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 500'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='${a}'/><stop offset='1' stop-color='${b}'/></linearGradient></defs><rect width='400' height='500' fill='url(%23g)'/><g opacity='.6'><path d='M-10 520C60 400 120 330 230 250' fill='none' stroke='${g}' stroke-width='3'/>${lf(60,430,40,g)}${lf(110,370,-30,g)}${lf(160,320,50,g)}${flw(235,245,3,"#ffffff",g)}${flw(120,350,1.8,"#ffffff",g)}${flw(330,120,1.6,"#ffffff",g)}${flw(45,90,1.1,"#ffffff",g)}</g></svg>`;
   return `url("data:image/svg+xml;utf8,${svg.replace(/#/g,'%23').replace(/\n/g,'')}")`; }
 const setBg=(el,src,i)=>el.style.backgroundImage=ph(src,i);
 const fmtDate=d=>`${d.getDate()} ${MON[d.getMonth()]} ${d.getFullYear()}`;
@@ -67,7 +73,10 @@ document.querySelectorAll(".rv").forEach(el=>io2.observe(el));
 const aud=$("#aud"),mu=$("#mu");
 if(C.music.src){aud.src=C.music.src;mu.classList.add("on","off")}
 mu.onclick=()=>{if(aud.paused){aud.play().then(()=>mu.classList.remove("off")).catch(()=>{})}else{aud.pause();mu.classList.add("off")}};
-$("#open").onclick=()=>{pgs[1].scrollIntoView({behavior:"smooth"});if(C.music.src)aud.play().then(()=>mu.classList.remove("off")).catch(()=>{})};
+history.scrollRestoration="manual";window.scrollTo(0,0);
+const stop=e=>{if(document.documentElement.classList.contains("lock"))e.preventDefault()};
+addEventListener("touchmove",stop,{passive:false});addEventListener("wheel",stop,{passive:false});
+$("#open").onclick=()=>{document.documentElement.classList.remove("lock");document.body.classList.remove("lock");pgs[1].scrollIntoView({behavior:"smooth"});if(C.music.src)aud.play().then(()=>mu.classList.remove("off")).catch(()=>{})};
 /* RSVP + buku tamu. Urutan pilihan penyimpanan:
    1) Supabase  (CONFIG.backend.supabase: url, key, invitation) -> tersimpan di database, tampil untuk semua tamu
    2) Google Apps Script (CONFIG.backend.url)                    -> tersimpan di Google Sheets

@@ -51,3 +51,12 @@ footer{font-size:11px;letter-spacing:.25em;text-transform:uppercase;opacity:.75;
 #toast{position:fixed;left:50%;top:20px;transform:translate(-50%,-100px);background:var(--deep);color:#fff;padding:12px 22px;border-radius:999px;font-size:13px;z-index:99;transition:.5s}#toast.on{transform:translate(-50%,0)}
 .rv{opacity:0;transform:translateY(24px);transition:opacity .9s,transform .9s}.rv.on{opacity:1;transform:none}
 [hidden]{display:none!important}@media(prefers-reduced-motion:reduce){*{transition-duration:.01s!important;scroll-behavior:auto!important}}
+
+/* terkunci sampai tombol Buka Undangan ditekan */
+html.lock,html.lock body{overflow:hidden;height:100%;overscroll-behavior:none}
+.lock #dots,.lock #mu{display:none!important}
+
+/* hiasan bunga di sudut halaman (warna mengikuti tema) */
+.pg::before{content:"";position:absolute;top:env(safe-area-inset-top,0px);left:-6px;width:min(36vw,150px);aspect-ratio:1;background:var(--flr) no-repeat center/contain;opacity:.9;z-index:1;pointer-events:none}
+.pg:nth-of-type(even)::before{left:auto;right:-6px;top:auto;bottom:0;transform:rotate(180deg)}
+.pic::before{background-image:var(--flrl);z-index:2}.cp::before{display:none}
